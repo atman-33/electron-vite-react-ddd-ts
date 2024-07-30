@@ -20,3 +20,13 @@ npm create @quick-start/electron
 √ Add Electron updater plugin? ... Yes
 √ Enable Electron download mirror proxy? ... Yes
 ```
+
+### prettier変更
+
+セミコロン有りに変更する。
+
+`.prettierrc.yaml`
+
+```prettier
+semi: true
+```
