@@ -1,7 +1,7 @@
-import Versions from './components/Versions';
-import electronLogo from './assets/electron.svg';
+import Versions from '@renderer/components/Versions';
+import electronLogo from '../assets/electron.svg';
 
-function App(): JSX.Element {
+const IndexPage = () => {
   const ipcHandle = (): void => window.electron.ipcRenderer.send('ping');
 
   return (
@@ -30,6 +30,6 @@ function App(): JSX.Element {
       <Versions></Versions>
     </>
   );
-}
+};
 
-export default App;
+export default IndexPage;
