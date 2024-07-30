@@ -21,12 +21,34 @@ npm create @quick-start/electron
 √ Enable Electron download mirror proxy? ... Yes
 ```
 
+### VSCode設定
+
+- 改行をLFに設定
+
+`.vscode\settings.json`
+
+```json
+  "files.eol": "\n"
+```
+
 ### prettier変更
 
-セミコロン有りに変更する。
+- セミコロン有り
 
 `.prettierrc.yaml`
 
 ```prettier
 semi: true
+```
+
+### eslint変更
+
+- アロー関数を有効
+
+`.eslintrc.cjs`
+
+```cjs
+  rules: {
+    '@typescript-eslint/explicit-function-return-type': 'off'
+  }
 ```
