@@ -23,7 +23,10 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^3.0.0",
-    "electron-updater": "^6.1.7"
+    "@generouted/react-router": "^1.19.6",
+    "electron-updater": "^6.1.7",
+    "generouted": "^1.19.6",
+    "react-router-dom": "^6.25.1"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^2.0.0",
