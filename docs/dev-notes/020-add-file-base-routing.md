@@ -43,9 +43,14 @@ pagesフォルダを作成し、その直下にindex.tsxを作成する。
 +-- src
 |   +-- renderer
     |   +-- src
-    |   |   +-- main.tsx
-        |   +-- pages
-            |   +-- index.tsx
+        |   +-- main.tsx
+            +-- pages
+                +-- _app.tsx  <- Nested layout
+                +-- index.tsx <- Page
+                |
+                +-- debug
+                |   +-- _layout.tsx <- Nested layout
+                    +-- index.tsx   <- Page
 ```
 
 上記で、pagesフォルダ以下がファイルベースルーティングの対象となる。

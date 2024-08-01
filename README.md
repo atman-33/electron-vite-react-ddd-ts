@@ -11,24 +11,34 @@ An Electron application with React and TypeScript
 ### Install
 
 ```bash
-$ npm install
+npm install
 ```
 
 ### Development
 
 ```bash
-$ npm run dev
+npm run dev
 ```
 
 ### Build
 
 ```bash
 # For windows
-$ npm run build:win
+npm run build:win
 
 # For macOS
-$ npm run build:mac
+npm run build:mac
 
 # For Linux
-$ npm run build:linux
+npm run build:linux
 ```
+
+## 技術スタック
+
+### フロントエンド（renderer）
+
+| パッケージ | 説明 |
+|------------|------|
+| Generouted | ファイルベースルーティング |
+
+### バックエンド（main）
