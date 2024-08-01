@@ -6,7 +6,7 @@ const DebugPage = () => {
 
   return (
     <>
-      <img alt="logo" className="logo" src={electronLogo} />
+      <img alt="logo" className="logo h-20" src={electronLogo} />
       <div className="creator">Powered by electron-vite</div>
       <div className="text">
         Build an Electron app with <span className="react">React</span>
@@ -17,14 +17,19 @@ const DebugPage = () => {
       </p>
       <div className="actions">
         <div className="action">
-          <a href="https://electron-vite.org/" target="_blank" rel="noreferrer">
+          <a
+            className="text-blue-600 underline"
+            href="https://electron-vite.org/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Documentation
           </a>
         </div>
-        <div className="action">
-          <a target="_blank" rel="noreferrer" onClick={ipcHandle}>
+        <div className="my-2">
+          <button className="rounded-md bg-blue-800 px-2 py-1" rel="noreferrer" onClick={ipcHandle}>
             Send IPC
-          </a>
+          </button>
         </div>
       </div>
       <Versions></Versions>

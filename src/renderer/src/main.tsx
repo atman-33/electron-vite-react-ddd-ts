@@ -1,4 +1,4 @@
-import './assets/main.css';
+import './styles/globals.css';
 
 import { routes } from 'generouted/react-router';
 import React from 'react';

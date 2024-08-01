@@ -10,7 +10,9 @@ import { Link, Outlet } from 'react-router-dom';
 const RootLayout = () => {
   return (
     <>
-      <Link to="/">Home</Link>
+      <Link to="/">
+        <div className="text-blue-600 underline">Home</div>
+      </Link>
       <Outlet />
     </>
   );

@@ -40,5 +40,6 @@ npm run build:linux
 | パッケージ | 説明 |
 |------------|------|
 | Generouted | ファイルベースルーティング |
+| Tailwind CSS | CSSフレームワーク |
 
 ### バックエンド（main）
