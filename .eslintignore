@@ -2,3 +2,6 @@ node_modules
 dist
 out
 .gitignore
+
+# shadcn/ui
+src/renderer/src/components/shadcn/ui
