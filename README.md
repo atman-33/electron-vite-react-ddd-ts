@@ -41,5 +41,6 @@ npm run build:linux
 |------------|------|
 | Generouted | ファイルベースルーティング |
 | Tailwind CSS | CSSフレームワーク |
+| shadcn/ui | コンポーネントライブラリ |
 
 ### バックエンド（main）
