@@ -1,10 +1,11 @@
+import { Button } from '@renderer/components/shadcn/ui/button';
 import { Link } from 'react-router-dom';
 
 const IndexPage = () => {
   return (
     <>
       <Link to="/debug">
-        <div className="text-blue-600 underline">Debug page</div>
+        <Button variant="default">Debug page</Button>
       </Link>
     </>
   );
