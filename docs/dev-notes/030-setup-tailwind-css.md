@@ -1,4 +1,4 @@
-# TailwindCSS追加
+# TailwindCSSのセットアップ方法
 
 ## 参考URL
 

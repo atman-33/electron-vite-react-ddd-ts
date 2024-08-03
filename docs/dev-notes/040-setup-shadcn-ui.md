@@ -1,4 +1,4 @@
-# shadcn/uiを追加（electron-vite向け）
+# shadcn/uiのセットアップ方法（electron-vite向け）
 
 ## ステップ
 
