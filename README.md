@@ -38,9 +38,10 @@ npm run build:linux
 ### フロントエンド（renderer）
 
 | パッケージ | 説明 |
-|------------|------|
+|----|----|
 | Generouted | ファイルベースルーティング |
 | Tailwind CSS | CSSフレームワーク |
 | shadcn/ui | コンポーネントライブラリ |
+| Storybook | UIコンポーネント開発環境 |
 
 ### バックエンド（main）
