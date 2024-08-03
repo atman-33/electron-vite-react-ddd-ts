@@ -1,4 +1,4 @@
-import Versions from '@renderer/components/Versions';
+import Versions from '@renderer/components/ui/versions/Versions';
 import electronLogo from '../../assets/electron.svg';
 
 const DebugPage = () => {

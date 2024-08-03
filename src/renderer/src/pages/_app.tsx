@@ -1,4 +1,5 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Header } from '@renderer/components/layouts/Header';
+import { Outlet } from 'react-router-dom';
 
 /**
  * トップレベルのレイアウト。
@@ -9,12 +10,10 @@ import { Link, Outlet } from 'react-router-dom';
  */
 const RootLayout = () => {
   return (
-    <>
-      <Link to="/">
-        <div className="text-blue-600 underline">Home</div>
-      </Link>
+    <div className="dark container p-4">
+      <Header to="/" />
       <Outlet />
-    </>
+    </div>
   );
 };
 
