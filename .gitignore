@@ -5,3 +5,6 @@ out
 *.log*
 
 *storybook.log
+
+# jest
+coverage
