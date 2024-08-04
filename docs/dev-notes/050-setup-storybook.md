@@ -53,19 +53,21 @@ import '../src/renderer/src/styles/globals.css';
 import { Meta, StoryObj } from '@storybook/react';
 import { Button } from './button';
 
-const meta = {
+const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
   argTypes: {
     variant: {
-      control: { type: 'select', options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'] },
+      control: { type: 'select'}, 
+      options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'],
     },
     size: {
-      control: { type: 'select', options: ['default', 'sm', 'lg', 'icon'] },
+      control: { type: 'select'}, 
+      options: ['default', 'sm', 'lg', 'icon'],
     },
     asChild: { control: 'boolean' },
   },
-} satisfies Meta<typeof Button>;
+};
 
 export default meta;
 
@@ -115,22 +117,6 @@ export const Link :Story = {
   args: {
     variant: 'link',
     size: 'default',
-    children: 'Button',
-  }
-}
-
-export const Small :Story = {
-  args: {
-    variant: 'default',
-    size: 'sm',
-    children: 'Button',
-  }
-}
-
-export const Large :Story = {
-  args: {
-    variant: 'default',
-    size: 'lg',
     children: 'Button',
   }
 }
