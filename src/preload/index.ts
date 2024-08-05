@@ -1,8 +1,10 @@
 import { electronAPI } from '@electron-toolkit/preload';
 import { contextBridge } from 'electron';
+import { apiHandlers, createApiInvoker } from '../main/presentation/api';
 
 // Custom APIs for renderer
-const api = {};
+const apiRenderer = createApiInvoker(apiHandlers);
+const api = apiRenderer;
 
 // Use `contextBridge` APIs to expose Electron APIs to
 // renderer only if context isolation is enabled, otherwise
