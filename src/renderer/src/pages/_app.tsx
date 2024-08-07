@@ -43,7 +43,7 @@ const RootLayout = () => {
       </div>
       {/* NOTE: flex-grow により、フレックスコンテナの余白を自動的に広げる */}
       <div className="flex flex-grow">
-        <div className="w-64 border-r-2 px-8 py-4">
+        <div className="w-64 border-r-2 px-4 py-4">
           <SidebarNav navItems={navItems} />
         </div>
         <div className="h-full flex-grow">
