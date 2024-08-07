@@ -1,17 +1,42 @@
+# ESLintのセットアップ方法
+
+オニオンアーキテクチャの依存関係を遵守するための不正なimport検知のルールを追加する。
+
+- ドメイン層が依存してはいけない層
+
+  - アプリケーション層
+  - インフラストラクチャ層
+  - プレゼンテーション層
+
+- アプリケーション層が依存してはいけない層
+
+  - インフラストラクチャ層
+  - プレゼンテーション層
+
+## ステップ
+
+### インストール
+
+```sh
+npm i -D eslint eslint-plugin-import eslint-import-resolver-typescript @typescript-eslint/eslint-plugin
+```
+
+### ESLint設定
+
+- 不正import検知のルールを追加する。
+
+`.eslintrc.cjs`
+
+```cjs
 module.exports = {
   extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    '@electron-toolkit/eslint-config-ts/recommended',
-    '@electron-toolkit/eslint-config-prettier',
-    'plugin:storybook/recommended',
+    ...,
     'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:@typescript-eslint/recommended'
   ],
   rules: {
-    '@typescript-eslint/explicit-function-return-type': 'off',
+    ...,
     'import/no-restricted-paths': [
       'error',
       {
@@ -48,3 +73,4 @@ module.exports = {
     ]
   }
 };
+```
