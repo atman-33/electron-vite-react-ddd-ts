@@ -4,15 +4,16 @@ import path from 'path';
 import { Config } from '../../domain/config/config';
 import { IConfigRepository } from '../../domain/config/iconfig-repository';
 
-class ConfigRepository implements IConfigRepository {
+export class ConfigRepository implements IConfigRepository {
   private configPath: string;
 
   constructor(configPath?: string) {
-    if (configPath) {
-      this.configPath = configPath;
-    } else {
+    if (!configPath) {
       this.configPath = path.resolve(this.getConfigFolderPath(), 'config.json');
+      return;
     }
+
+    this.configPath = configPath;
   }
 
   get(): Config {
@@ -38,5 +39,3 @@ class ConfigRepository implements IConfigRepository {
     return folderPath;
   }
 }
-
-export { ConfigRepository };
