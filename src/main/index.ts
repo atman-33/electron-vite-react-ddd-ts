@@ -2,7 +2,8 @@ import { electronApp, is, optimizer } from '@electron-toolkit/utils';
 import { app, BrowserWindow, ipcMain, shell } from 'electron';
 import { join } from 'path';
 import icon from '../../resources/icon.png?asset';
-import { apiHandlers, registerApiHandlers } from './presentation/api';
+import { registerApiHandlers } from './presentation/api';
+import { apiHandlers } from './presentation/api-handlers';
 
 console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
 

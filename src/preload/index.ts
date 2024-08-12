@@ -1,6 +1,7 @@
 import { electronAPI } from '@electron-toolkit/preload';
 import { contextBridge } from 'electron';
-import { apiHandlers, createApiInvoker } from '../main/presentation/api';
+import { createApiInvoker } from '../main/presentation/api';
+import { apiHandlers } from '../main/presentation/api-handlers';
 
 // Custom APIs for renderer
 const apiRenderer = createApiInvoker(apiHandlers);

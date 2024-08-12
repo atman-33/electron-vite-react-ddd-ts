@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ipcMain, ipcRenderer } from 'electron';
-import { apiHandlers } from './api-handlers';
 
 /** mainプロセスにAPIをハンドリングする。mainプロセス上で呼び出す。*/
 export const registerApiHandlers = (apiHandlersObj: Record<string, (...args: any[]) => any>) => {
@@ -34,6 +33,3 @@ export const createApiInvoker = (apiHandlersObj: Record<string, (...args: any[])
 
   return apiRenderer; //for文で生成された、APIアクセス用のオブジェクトを返す
 };
-
-/** APIの型定義。renderer.d.tsファイルで参照する。*/
-export type Api = typeof apiHandlers;

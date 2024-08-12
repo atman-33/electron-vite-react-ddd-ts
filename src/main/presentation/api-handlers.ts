@@ -14,3 +14,6 @@ export const apiHandlers = {
   },
   getProcessCwd: async () => process.cwd()
 };
+
+/** APIの型定義。renderer.d.tsファイルで参照する。*/
+export type Api = typeof apiHandlers;
