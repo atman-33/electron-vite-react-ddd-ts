@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  // NOTE: Electronでは、このurlを利用せずにmain側で設定する。
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  name       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  todos      Todo[]
+}
+
+model Todo {
+  id           String    @id @default(uuid())
+  content      String
+  deadline     DateTime?
+  status       Int
+  user         User      @relation(fields: [user_id], references: [id])
+  user_id      String
+  todo_type    TodoType  @relation(fields: [todo_type_id], references: [id])
+  todo_type_id String
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+}
+
+model TodoType {
+  id         String   @id @default(uuid())
+  name       String   @unique
+  sort_order Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  todos      Todo[]
+}
