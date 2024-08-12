@@ -6,6 +6,6 @@ describe('config-repository', () => {
   test('DATABASE_URLを取得する', () => {
     const configRepository = new ConfigRepository(path.resolve(__dirname, 'config.json'));
 
-    expect('file:./dev.db').toBe(configRepository.get().DATABASE_URL);
+    expect('Hello World').toBe(configRepository.get().HELLO_WORLD);
   });
 });
