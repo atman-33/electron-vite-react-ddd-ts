@@ -1,7 +1,7 @@
-import { IUserRepository } from '../../domain/models/user/iuser-repository';
-import { UserDomain } from '../../domain/models/user/user-domain';
-import { UserName } from '../../domain/value-objects/user-name';
-import { ITransactionManager } from '../shared/itransaction-manager';
+import { IUserRepository } from '../../../domain/models/user/iuser-repository';
+import { UserDomain } from '../../../domain/models/user/user-domain';
+import { UserName } from '../../../domain/value-objects/user-name';
+import { ITransactionManager } from '../../shared/itransaction-manager';
 
 export class RegisterUserUseCase {
   constructor(

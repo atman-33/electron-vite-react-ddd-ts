@@ -1,11 +1,12 @@
 import { IUserRepository } from '../../../domain/models/user/iuser-repository';
 import { UserDomain } from '../../../domain/models/user/user-domain';
 import { UserId } from '../../../domain/value-objects/user-id';
-import { UserName } from '../../../domain/value-objects/user-name';
 import { PrismaClientManager } from '../prisma-client-manager';
+import { UserMapping } from './user-mapping';
 
 export class PrismaUserRepository implements IUserRepository {
   constructor(private clientManager: PrismaClientManager) {}
+
   async insert(user: UserDomain): Promise<void> {
     const client = this.clientManager.getClient();
 
@@ -50,6 +51,13 @@ export class PrismaUserRepository implements IUserRepository {
       return null;
     }
 
-    return UserDomain.reconstruct(new UserId(user.id), new UserName(user.name));
+    return UserMapping.toDomain(user);
+  }
+
+  async findAll(): Promise<UserDomain[]> {
+    const client = this.clientManager.getClient();
+
+    const users = await client.user.findMany();
+    return users.map((user) => UserMapping.toDomain(user));
   }
 }
