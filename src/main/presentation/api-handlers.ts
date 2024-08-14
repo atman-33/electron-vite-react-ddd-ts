@@ -1,3 +1,5 @@
+import { userController } from './user/user-controller';
+
 /**
  * ハンドリングするAPIを定義するオブジェクト。
  *
@@ -12,7 +14,9 @@ export const apiHandlers = {
     const now = new Date();
     return `${now.toLocaleString('ja-JP')}`;
   },
-  getProcessCwd: async () => process.cwd()
+  getProcessCwd: async () => process.cwd(),
+
+  registerUser: async (name: string) => userController.registerUser(name)
 };
 
 /** APIの型定義。renderer.d.tsファイルで参照する。*/

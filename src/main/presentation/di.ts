@@ -6,7 +6,7 @@ import { PrismaUserRepository } from '../infrastructure/prisma/user/prisma-user-
 
 // re-export the container, so people must import this file
 // and not accidentally get `container' directly from tsyringe
-export { container };
+export { container as appContainer };
 
 // IDataAccessClientManager
 container.register(
