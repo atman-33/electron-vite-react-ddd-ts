@@ -1,3 +1,4 @@
+import { inject, injectable } from 'tsyringe';
 import { ITodoRepository } from '../../../domain/models/todo/itodo-repository';
 import { TodoDomain } from '../../../domain/models/todo/todo-domain';
 import { TodoDomainCollection } from '../../../domain/models/todo/todo-domain-collection';
@@ -5,8 +6,12 @@ import { UserId } from '../../../domain/value-objects/user-id';
 import { PrismaClientManager } from '../prisma-client-manager';
 import { TodoMapping } from './todo-mapping';
 
+@injectable()
 export class PrismaTodoRepository implements ITodoRepository {
-  constructor(private clientManager: PrismaClientManager) {}
+  constructor(
+    @inject('IDataAccessClientManager')
+    private clientManager: PrismaClientManager
+  ) {}
 
   async insert(todo: TodoDomain): Promise<void> {
     const client = this.clientManager.getClient();

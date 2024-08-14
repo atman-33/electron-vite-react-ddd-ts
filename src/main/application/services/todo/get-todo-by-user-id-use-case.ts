@@ -1,11 +1,15 @@
-import { ITodoRepository } from '../../../domain/models/todo/itodo-repository';
+import { inject, injectable } from 'tsyringe';
+import type { ITodoRepository } from '../../../domain/models/todo/itodo-repository';
 import { TodoDomainCollection } from '../../../domain/models/todo/todo-domain-collection';
 import { UserId } from '../../../domain/value-objects/user-id';
-import { ITransactionManager } from '../../shared/itransaction-manager';
+import type { ITransactionManager } from '../../shared/itransaction-manager';
 
+@injectable()
 export class GetTodoByUserIdUseCase {
   constructor(
+    @inject('ITodoRepository')
     private readonly todoRepository: ITodoRepository,
+    @inject('ITransactionManager')
     private readonly transactionManager: ITransactionManager
   ) {}
 

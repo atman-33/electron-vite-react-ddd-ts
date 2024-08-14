@@ -48,5 +48,7 @@ npm run build:linux
 
 | パッケージ | 説明                 |
 | ---------- | -------------------- |
-| Jest       | テストフレームワーク |
 | Prisma     | ORMライブラリ |
+| TSyringe   | DIコンテナライブラリ |
+| JSend      | JSONレスポンス仕様 [jsend](https://github.com/omniti-labs/jsend) |
+| Jest       | テストフレームワーク |

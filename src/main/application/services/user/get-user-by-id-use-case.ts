@@ -1,11 +1,15 @@
-import { IUserRepository } from '../../../domain/models/user/iuser-repository';
+import { inject, injectable } from 'tsyringe';
+import type { IUserRepository } from '../../../domain/models/user/iuser-repository';
 import { UserDomain } from '../../../domain/models/user/user-domain';
 import { UserId } from '../../../domain/value-objects/user-id';
-import { ITransactionManager } from '../../shared/itransaction-manager';
+import type { ITransactionManager } from '../../shared/itransaction-manager';
 
+@injectable()
 export class GetUserByIdUseCase {
   constructor(
+    @inject('IUserRepository')
     private readonly userRepository: IUserRepository,
+    @inject('ITransactionManager')
     private readonly transactionManager: ITransactionManager
   ) {}
 

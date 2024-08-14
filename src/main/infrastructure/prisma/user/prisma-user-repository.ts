@@ -1,11 +1,16 @@
+import { inject, injectable } from 'tsyringe';
 import { IUserRepository } from '../../../domain/models/user/iuser-repository';
 import { UserDomain } from '../../../domain/models/user/user-domain';
 import { UserId } from '../../../domain/value-objects/user-id';
 import { PrismaClientManager } from '../prisma-client-manager';
 import { UserMapping } from './user-mapping';
 
+@injectable()
 export class PrismaUserRepository implements IUserRepository {
-  constructor(private clientManager: PrismaClientManager) {}
+  constructor(
+    @inject('IDataAccessClientManager')
+    private clientManager: PrismaClientManager
+  ) {}
 
   async insert(user: UserDomain): Promise<void> {
     const client = this.clientManager.getClient();
