@@ -5,6 +5,6 @@ import { TodoDomainCollection } from './todo-domain-collection';
 export interface ITodoRepository {
   insert(todo: TodoDomain): Promise<void>;
   update(todo: TodoDomain): Promise<void>;
-  delete(todo: TodoDomain): Promise<void>;
+  delete(userId: UserId): Promise<void>;
   findByUserId(userId: UserId): Promise<TodoDomainCollection>;
 }

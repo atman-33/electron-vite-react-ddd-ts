@@ -43,12 +43,12 @@ export class PrismaTodoRepository implements ITodoRepository {
       }
     });
   }
-  async delete(todo: TodoDomain): Promise<void> {
+  async delete(userId: UserId): Promise<void> {
     const client = this.clientManager.getClient();
 
     await client.todo.delete({
       where: {
-        id: todo.id.value
+        id: userId.value
       }
     });
   }

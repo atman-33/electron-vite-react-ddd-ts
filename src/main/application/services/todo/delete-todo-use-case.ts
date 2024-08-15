@@ -1,8 +1,11 @@
 import { inject, injectable } from 'tsyringe';
 import type { ITodoRepository } from '../../../domain/models/todo/itodo-repository';
-import { TodoDomain } from '../../../domain/models/todo/todo-domain';
-import { TodoDomainCollection } from '../../../domain/models/todo/todo-domain-collection';
+import { UserId } from '../../../domain/value-objects/user-id';
 import type { ITransactionManager } from '../../shared/itransaction-manager';
+
+export type DeleteTodoInput = {
+  id: string;
+};
 
 @injectable()
 export class DeleteTodoUseCase {
@@ -13,10 +16,9 @@ export class DeleteTodoUseCase {
     private readonly transactionManager: ITransactionManager
   ) {}
 
-  execute(todos: TodoDomainCollection, todo: TodoDomain): Promise<void> {
+  execute(deleteTodoData: DeleteTodoInput): Promise<void> {
     return this.transactionManager.begin(async () => {
-      todos.remove(todo);
-      await this.todoRepository.delete(todo);
+      await this.todoRepository.delete(new UserId(deleteTodoData.id));
     });
   }
 }
