@@ -1,7 +1,14 @@
 import { inject, injectable } from 'tsyringe';
 import type { IUserRepository } from '../../../domain/models/user/iuser-repository';
 import { UserDomain } from '../../../domain/models/user/user-domain';
+import { UserId } from '../../../domain/value-objects/user-id';
+import { UserName } from '../../../domain/value-objects/user-name';
 import type { ITransactionManager } from '../../shared/itransaction-manager';
+
+type UpdateUserInput = {
+  id: string;
+  name: string;
+};
 
 @injectable()
 export class UpdateUserUseCase {
@@ -12,7 +19,11 @@ export class UpdateUserUseCase {
     private readonly transactionManager: ITransactionManager
   ) {}
 
-  async execute(user: UserDomain): Promise<void> {
+  async execute(updateUserData: UpdateUserInput): Promise<void> {
+    const user = UserDomain.reconstruct(
+      new UserId(updateUserData.id),
+      new UserName(updateUserData.name)
+    );
     await this.transactionManager.begin(async () => {
       await this.userRepository.update(user);
     });

@@ -5,6 +5,10 @@ import { UserName } from '../../../domain/value-objects/user-name';
 import type { ITransactionManager } from '../../shared/itransaction-manager';
 import { UserDto } from './dto/user-dto';
 
+type RegisterUserInput = {
+  name: string;
+};
+
 @injectable()
 export class RegisterUserUseCase {
   constructor(
@@ -14,8 +18,8 @@ export class RegisterUserUseCase {
     private readonly transactionManager: ITransactionManager
   ) {}
 
-  async execute(name: string): Promise<UserDto> {
-    const user = UserDomain.create(new UserName(name));
+  async execute(registerUserData: RegisterUserInput): Promise<UserDto> {
+    const user = UserDomain.create(new UserName(registerUserData.name));
     await this.transactionManager.begin(async () => {
       try {
         await this.userRepository.insert(user);

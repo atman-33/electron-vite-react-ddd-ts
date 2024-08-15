@@ -3,6 +3,10 @@ import type { IUserRepository } from '../../../domain/models/user/iuser-reposito
 import { UserId } from '../../../domain/value-objects/user-id';
 import { UserDto } from './dto/user-dto';
 
+type GetUserByIdInput = {
+  id: string;
+};
+
 @injectable()
 export class GetUserByIdUseCase {
   constructor(
@@ -10,8 +14,8 @@ export class GetUserByIdUseCase {
     private readonly userRepository: IUserRepository
   ) {}
 
-  async execute(id: UserId): Promise<UserDto | null> {
-    const user = await this.userRepository.findById(id);
+  async execute(getUserByIdData: GetUserByIdInput): Promise<UserDto | null> {
+    const user = await this.userRepository.findById(new UserId(getUserByIdData.id));
     if (!user) {
       throw new Error('User not found');
     }

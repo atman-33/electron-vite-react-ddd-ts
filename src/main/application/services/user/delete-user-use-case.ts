@@ -3,6 +3,10 @@ import type { IUserRepository } from '../../../domain/models/user/iuser-reposito
 import { UserId } from '../../../domain/value-objects/user-id';
 import type { ITransactionManager } from '../../shared/itransaction-manager';
 
+type DeleteUserInput = {
+  id: string;
+};
+
 @injectable()
 export class DeleteUserUseCase {
   constructor(
@@ -12,9 +16,9 @@ export class DeleteUserUseCase {
     private readonly transactionManager: ITransactionManager
   ) {}
 
-  async execute(id: UserId): Promise<void> {
+  async execute(deleteUserData: DeleteUserInput): Promise<void> {
     await this.transactionManager.begin(async () => {
-      await this.userRepository.delete(id);
+      await this.userRepository.delete(new UserId(deleteUserData.id));
     });
   }
 }

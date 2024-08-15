@@ -4,9 +4,6 @@ import { GetUserByIdUseCase } from '../../application/services/user/get-user-by-
 import { GetUsersUseCase } from '../../application/services/user/get-users-use-case';
 import { RegisterUserUseCase } from '../../application/services/user/register-user-use-case';
 import { UpdateUserUseCase } from '../../application/services/user/update-user-use-case';
-import { UserDomain } from '../../domain/models/user/user-domain';
-import { UserId } from '../../domain/value-objects/user-id';
-import { UserName } from '../../domain/value-objects/user-name';
 import { appContainer } from '../di';
 import { JSendResponse } from '../shared/jsend-response';
 
@@ -15,7 +12,7 @@ const useUserController = () => {
     const registerUserUseCase = appContainer.resolve(RegisterUserUseCase);
 
     try {
-      const user = await registerUserUseCase.execute(name);
+      const user = await registerUserUseCase.execute({ name });
       return { status: 'success', data: user };
     } catch (error: unknown) {
       return { status: 'error', message: (error as Error).message };
@@ -37,7 +34,7 @@ const useUserController = () => {
     const getUserByIdUseCase = appContainer.resolve(GetUserByIdUseCase);
 
     try {
-      const user = await getUserByIdUseCase.execute(new UserId(id));
+      const user = await getUserByIdUseCase.execute({ id });
       return { status: 'success', data: user };
     } catch (error: unknown) {
       return { status: 'error', message: (error as Error).message };
@@ -48,7 +45,7 @@ const useUserController = () => {
     const updateUserUseCase = appContainer.resolve(UpdateUserUseCase);
 
     try {
-      await updateUserUseCase.execute(UserDomain.reconstruct(new UserId(id), new UserName(name)));
+      await updateUserUseCase.execute({ id, name });
       return { status: 'success', data: null };
     } catch (error: unknown) {
       return { status: 'error', message: (error as Error).message };
@@ -59,7 +56,7 @@ const useUserController = () => {
     const deleteUserUseCase = appContainer.resolve(DeleteUserUseCase);
 
     try {
-      await deleteUserUseCase.execute(new UserId(id));
+      await deleteUserUseCase.execute({ id });
       return { status: 'success', data: null };
     } catch (error: unknown) {
       return { status: 'error', message: (error as Error).message };
