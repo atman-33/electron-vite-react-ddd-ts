@@ -1,3 +1,7 @@
+import { DeleteUserInput } from '../application/services/user/delete-user-use-case';
+import { GetUserByIdArgs } from '../application/services/user/get-user-by-id-use-case';
+import { RegisterUserInput } from '../application/services/user/register-user-use-case';
+import { UpdateUserInput } from '../application/services/user/update-user-use-case';
 import { userController } from './user/user-controller';
 
 /**
@@ -16,11 +20,14 @@ export const apiHandlers = {
   },
   getProcessCwd: async () => process.cwd(),
 
-  registerUser: async (name: string) => userController.registerUser(name),
+  // user-controller
+  registerUser: async (registerUserData: RegisterUserInput) =>
+    userController.registerUser(registerUserData),
   getUsers: async () => userController.getUsers(),
-  getUserById: async (id: string) => userController.getUserById(id),
-  updateUser: async (id: string, name: string) => userController.updateUser(id, name),
-  deleteUser: async (id: string) => userController.deleteUser(id)
+  getUserById: async (getUserByIdArgs: GetUserByIdArgs) =>
+    userController.getUserById(getUserByIdArgs),
+  updateUser: async (updateUserData: UpdateUserInput) => userController.updateUser(updateUserData),
+  deleteUser: async (deleteUserData: DeleteUserInput) => userController.deleteUser(deleteUserData)
 };
 
 /** APIの型定義。renderer.d.tsファイルで参照する。*/

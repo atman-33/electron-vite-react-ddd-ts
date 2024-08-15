@@ -3,7 +3,7 @@ import type { IUserRepository } from '../../../domain/models/user/iuser-reposito
 import { UserId } from '../../../domain/value-objects/user-id';
 import { UserDto } from './dto/user-dto';
 
-type GetUserByIdInput = {
+export type GetUserByIdArgs = {
   id: string;
 };
 
@@ -14,8 +14,8 @@ export class GetUserByIdUseCase {
     private readonly userRepository: IUserRepository
   ) {}
 
-  async execute(getUserByIdData: GetUserByIdInput): Promise<UserDto | null> {
-    const user = await this.userRepository.findById(new UserId(getUserByIdData.id));
+  async execute(getUserByIdArgs: GetUserByIdArgs): Promise<UserDto | null> {
+    const user = await this.userRepository.findById(new UserId(getUserByIdArgs.id));
     if (!user) {
       throw new Error('User not found');
     }

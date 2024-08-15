@@ -3,7 +3,7 @@ import type { IUserRepository } from '../../../domain/models/user/iuser-reposito
 import { UserId } from '../../../domain/value-objects/user-id';
 import type { ITransactionManager } from '../../shared/itransaction-manager';
 
-type DeleteUserInput = {
+export type DeleteUserInput = {
   id: string;
 };
 

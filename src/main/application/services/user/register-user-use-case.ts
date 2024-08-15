@@ -5,7 +5,7 @@ import { UserName } from '../../../domain/value-objects/user-name';
 import type { ITransactionManager } from '../../shared/itransaction-manager';
 import { UserDto } from './dto/user-dto';
 
-type RegisterUserInput = {
+export type RegisterUserInput = {
   name: string;
 };
 

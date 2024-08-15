@@ -5,7 +5,7 @@ import { UserId } from '../../../domain/value-objects/user-id';
 import { UserName } from '../../../domain/value-objects/user-name';
 import type { ITransactionManager } from '../../shared/itransaction-manager';
 
-type UpdateUserInput = {
+export type UpdateUserInput = {
   id: string;
   name: string;
 };
