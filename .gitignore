@@ -8,3 +8,6 @@ out
 
 # jest
 coverage
+
+# test
+prisma/fake.db

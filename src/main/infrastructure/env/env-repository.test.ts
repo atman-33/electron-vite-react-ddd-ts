@@ -13,7 +13,7 @@ jest.mock('path', () => ({
   resolve: jest.fn()
 }));
 
-describe('EnvRepository', () => {
+describe('env-repository', () => {
   let envRepository: EnvRepository;
 
   beforeEach(() => {

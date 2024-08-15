@@ -1,6 +1,7 @@
 import { electronApp, is, optimizer } from '@electron-toolkit/utils';
 import { app, BrowserWindow, ipcMain, shell } from 'electron';
 import { join } from 'path';
+// eslint-disable-next-line import/no-unresolved
 import icon from '../../resources/icon.png?asset';
 import { registerApiHandlers } from './presentation/api';
 import { apiHandlers } from './presentation/api-handlers';

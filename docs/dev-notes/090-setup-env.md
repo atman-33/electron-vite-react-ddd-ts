@@ -11,6 +11,7 @@ electron ビルド時に、exeファイルと同階層の`.env`ファイルを�
 ```ts
 type Env = {
   DATABASE_URL: string;
+  FAKE_URL: string;
 };
 
 export type { Env };

@@ -16,7 +16,11 @@ export const apiHandlers = {
   },
   getProcessCwd: async () => process.cwd(),
 
-  registerUser: async (name: string) => userController.registerUser(name)
+  registerUser: async (name: string) => userController.registerUser(name),
+  getUsers: async () => userController.getUsers(),
+  getUserById: async (id: string) => userController.getUserById(id),
+  updateUser: async (id: string, name: string) => userController.updateUser(id, name),
+  deleteUser: async (id: string) => userController.deleteUser(id)
 };
 
 /** APIの型定義。renderer.d.tsファイルで参照する。*/
