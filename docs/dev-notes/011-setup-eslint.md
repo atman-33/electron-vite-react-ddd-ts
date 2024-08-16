@@ -74,3 +74,32 @@ module.exports = {
   }
 };
 ```
+
+### @エイリアスのエラー対策
+
+設定ファイルに、settingsを追加する。  
+
+`.eslintrc.cjs`
+
+```cjs
+import * as path from 'path';
+
+module.exports = {
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+        extensions: ['.js', '.jsx', '.ts', '.d.ts', '.tsx']
+      },
+      typescript: {
+        project: './tsconfig.json'
+      },
+      alias: {
+        map: [['~', path.resolve(__dirname, './src')]],
+        extensions: ['.js', '.jsx', '.ts', '.d.ts', '.tsx']
+      }
+    }
+  },
+  extends: [
+    // ...
+```

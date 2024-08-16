@@ -111,6 +111,16 @@ container.register('ITodoRepository', {
 });
 ```
 
+### エントリーポイントにてポリフィル読み込み
+
+`src\main\index.ts`
+
+```ts
+import 'reflect-metadata';
+
+// ...
+```
+
 ### インスタンス利用例
 
 e.g.  
