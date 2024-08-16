@@ -6,9 +6,11 @@ export class TodoDto {
   public readonly deadline: Date | null;
   public readonly status: number;
   public readonly userId: string;
-  public readonly todoTypeId: string;
-  public readonly todoTypeName: string;
-  public readonly todoTypeSortOrder: number;
+  public readonly todoType!: {
+    id: string;
+    name: string;
+    sortOrder: number;
+  };
 
   constructor(todo: TodoDomain) {
     this.id = todo.id.value;
@@ -16,8 +18,8 @@ export class TodoDto {
     this.deadline = todo.deadline.value;
     this.status = todo.status.value;
     this.userId = todo.userId.value;
-    this.todoTypeId = todo.todoType.id.value;
-    this.todoTypeName = todo.todoType.name.value;
-    this.todoTypeSortOrder = todo.todoType.sortOrder.value;
+    this.todoType.id = todo.todoType.id.value;
+    this.todoType.name = todo.todoType.name.value;
+    this.todoType.sortOrder = todo.todoType.sortOrder.value;
   }
 }

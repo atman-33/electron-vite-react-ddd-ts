@@ -17,9 +17,11 @@ export type AddTodoInput = {
   deadline: Date | null;
   status: number;
   userId: string;
-  todoTypeId: string;
-  todoTypeName: string;
-  todoTypeSortOrder: number;
+  todoType: {
+    id: string;
+    name: string;
+    sortOrder: number;
+  };
 };
 
 @injectable()
@@ -32,8 +34,7 @@ export class AddTodoUseCase {
   ) {}
 
   async execute(addTodoData: AddTodoInput): Promise<TodoDto> {
-    const { content, deadline, status, userId, todoTypeId, todoTypeName, todoTypeSortOrder } =
-      addTodoData;
+    const { content, deadline, status, userId, todoType } = addTodoData;
 
     const todo = TodoDomain.create(
       new Content(content),
@@ -41,9 +42,9 @@ export class AddTodoUseCase {
       new Status(status),
       new UserId(userId),
       TodoTypeDomain.reconstruct(
-        new TodoTypeId(todoTypeId),
-        new TodoTypeName(todoTypeName),
-        new SortOrder(todoTypeSortOrder)
+        new TodoTypeId(todoType.id),
+        new TodoTypeName(todoType.name),
+        new SortOrder(todoType.sortOrder)
       )
     );
     await this.transactionManager.begin(async () => {
