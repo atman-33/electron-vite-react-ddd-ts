@@ -8,12 +8,9 @@
 
 ### API実装用の処理を作成
 
-`src\main\presentation\api.ts`
+`src\main\presentation\api-handlers.ts`
 
 ```ts
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { ipcMain, ipcRenderer } from 'electron';
-
 /**
  * ハンドリングするAPIを定義するオブジェクト。
  *
@@ -27,8 +24,19 @@ export const apiHandlers = {
   getTime: async () => {
     const now = new Date();
     return `${now.toLocaleString('ja-JP')}`;
-  }
+  },
+  getProcessCwd: async () => process.cwd()
 };
+
+/** APIの型定義。renderer.d.tsファイルで参照する。*/
+export type Api = typeof apiHandlers;
+```
+
+`src\main\presentation\api.ts`
+
+```ts
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ipcMain, ipcRenderer } from 'electron';
 
 /** mainプロセスにAPIをハンドリングする。mainプロセス上で呼び出す。*/
 export const registerApiHandlers = (apiHandlersObj: Record<string, (...args: any[]) => any>) => {
@@ -62,9 +70,6 @@ export const createApiInvoker = (apiHandlersObj: Record<string, (...args: any[])
 
   return apiRenderer; //for文で生成された、APIアクセス用のオブジェクトを返す
 };
-
-/** APIの型定義。renderer.d.tsファイルで参照する。*/
-export type Api = typeof apiHandlers;
 ```
 
 ### mainにAPIを登録
@@ -72,7 +77,8 @@ export type Api = typeof apiHandlers;
 `src\main\index.ts`
 
 ```ts
-import { apiHandlers, registerApiHandlers } from './presentation/api';
+import { registerApiHandlers } from './presentation/api';
+import { apiHandlers } from './presentation/api-handlers';
 
 ...
 registerApiHandlers(apiHandlers);
@@ -84,7 +90,8 @@ registerApiHandlers(apiHandlers);
 
 ```ts
 import { contextBridge } from 'electron';
-+ import { apiHandlers, createApiInvoker } from '../main/presentation/api';
++ import { createApiInvoker } from '../main/presentation/api';
++ import { apiHandlers } from '../main/presentation/api-handlers';
 
 // Custom APIs for renderer
 + const apiRenderer = createApiInvoker(apiHandlers);
@@ -114,7 +121,7 @@ if (process.contextIsolated) {
 
 ```ts
 import { ElectronAPI } from '@electron-toolkit/preload';
-+ import { Api } from '../main/presentation/api';
++ import { Api } from '../main/presentation/api-handlers';
 
 declare global {
   interface Window {

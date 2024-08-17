@@ -1,5 +1,5 @@
 type Config = {
-  DATABASE_URL: string;
+  HELLO_WORLD: string;
 };
 
 export type { Config };

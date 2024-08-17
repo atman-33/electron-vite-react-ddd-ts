@@ -44,7 +44,7 @@ module.exports = {
           // Domain層が依存してはいけない領域
           {
             target: './src/main/domain/**/!(*.spec.ts|*.test.ts)',
-            from: './src/main/use-case/**/*',
+            from: './src/main/application/**/*',
             message: 'Domain層でUseCase（Application）層をimportしてはいけません。'
           },
           {
@@ -57,20 +57,49 @@ module.exports = {
             from: './src/main/infrastructure/**/*!(test).ts',
             message: 'Domain層でInfrastructure層をimportしてはいけません。'
           },
-          // UseCase（Application）層が依存してはいけない領域
+          // Application層（ユースケース）が依存してはいけない領域
           {
-            target: './src/main/use-case/**/!(*.spec.ts|*.test.ts)',
+            target: './src/main/application/**/!(*.spec.ts|*.test.ts)',
             from: './src/main/presentation/**/*',
-            message: 'UseCase（Application）層でPresentation層をimportしてはいけません。'
+            message: 'Application層（ユースケース）でPresentation層をimportしてはいけません。'
           },
           {
-            target: './src/main/use-case/**/!(*.spec.ts|*.test.ts)',
+            target: './src/main/application/**/!(*.spec.ts|*.test.ts)',
             from: './src/main/infrastructure/**/*',
-            message: 'UseCase（Application）層でInfrastructure層をimportしてはいけません。'
+            message: 'Application層（ユースケース）でInfrastructure層をimportしてはいけません。'
           }
         ]
       }
     ]
   }
 };
+```
+
+### @エイリアスのエラー対策
+
+設定ファイルに、settingsを追加する。  
+
+`.eslintrc.cjs`
+
+```cjs
+import * as path from 'path';
+
+module.exports = {
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+        extensions: ['.js', '.jsx', '.ts', '.d.ts', '.tsx']
+      },
+      typescript: {
+        project: './tsconfig.json'
+      },
+      alias: {
+        map: [['~', path.resolve(__dirname, './src')]],
+        extensions: ['.js', '.jsx', '.ts', '.d.ts', '.tsx']
+      }
+    }
+  },
+  extends: [
+    // ...
 ```
