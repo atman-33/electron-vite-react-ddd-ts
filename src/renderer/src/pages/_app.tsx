@@ -12,11 +12,11 @@ const navItems: NavItem[] = [
     title: '🚀Samples',
     items: [
       {
-        title: 'Config',
-        href: '/config'
+        title: 'User Setting',
+        href: '/user'
       },
       {
-        title: 'Todos',
+        title: 'Todo List',
         href: '/todos'
       }
     ]
