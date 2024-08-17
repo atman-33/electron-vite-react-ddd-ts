@@ -25,7 +25,7 @@ export const apiHandlers = {
   },
   getProcessCwd: async () => process.cwd(),
 
-  // user-controller
+  // // user-controller
   registerUser: async (registerUserData: RegisterUserInput) =>
     userController.registerUser(registerUserData),
   getUsers: async () => userController.getUsers(),

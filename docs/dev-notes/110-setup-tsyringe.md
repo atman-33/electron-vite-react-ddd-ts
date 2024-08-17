@@ -121,6 +121,40 @@ import 'reflect-metadata';
 // ...
 ```
 
+`src\preload\index.ts`
+
+```ts
+import 'reflect-metadata';
+
+// ...
+```
+
+### デコレータを利用可能にする設定
+
+- インストール
+
+```sh
+npm i @swc/core
+```
+
+- vite.config設定を変更
+
+`electron.vite.config.ts`
+
+```ts
+// electron.vite.config.ts
+import { defineConfig, swcPlugin } from 'electron-vite'
+
+export default defineConfig({
+  main: {
+    plugins: [swcPlugin()]
+  },
+  // ...
+})
+```
+
+> [TypeScript Decorator](https://electron-vite.org/guide/typescript-decorator)
+
 ### インスタンス利用例
 
 e.g.  

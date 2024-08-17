@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import { electronAPI } from '@electron-toolkit/preload';
 import { contextBridge } from 'electron';
 import { createApiInvoker } from '../main/presentation/api';
