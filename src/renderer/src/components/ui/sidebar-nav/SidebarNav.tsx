@@ -23,7 +23,11 @@ export const SidebarNav = (props: SidebarNavProps) => {
           <NavTitle title={item.title} href={item.href} />
           <div className="flex flex-col gap-y-2 py-2 pl-6">
             {item.items.map((item, index) => (
-              <Link to={item.href} key={index} className="text-foreground/60 hover:underline">
+              <Link
+                to={item.href}
+                key={index}
+                className="text-sm text-foreground/60 hover:underline"
+              >
                 <NavTitle title={item.title} href={item.href} />
               </Link>
             ))}

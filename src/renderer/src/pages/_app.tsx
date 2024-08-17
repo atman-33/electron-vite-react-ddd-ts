@@ -1,3 +1,4 @@
+import { ColorToaster } from '@renderer/components/shadcn/custom/color-toaster';
 import { Header } from '@renderer/components/ui/header/Header';
 import { NavItem, SidebarNav } from '@renderer/components/ui/sidebar-nav/SidebarNav';
 import { Outlet } from 'react-router-dom';
@@ -49,6 +50,7 @@ const RootLayout = () => {
         <div className="h-full flex-grow">
           <Outlet />
         </div>
+        <ColorToaster />
       </div>
     </div>
   );

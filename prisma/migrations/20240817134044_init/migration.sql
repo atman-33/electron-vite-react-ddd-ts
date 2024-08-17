@@ -30,4 +30,7 @@ CREATE TABLE "TodoType" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "User_name_key" ON "User"("name");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "TodoType_name_key" ON "TodoType"("name");
