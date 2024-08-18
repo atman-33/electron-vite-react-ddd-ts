@@ -6,6 +6,7 @@ import { DeleteUserInput } from '../application/services/user/delete-user-use-ca
 import { GetUserByIdArgs } from '../application/services/user/get-user-by-id-use-case';
 import { RegisterUserInput } from '../application/services/user/register-user-use-case';
 import { UpdateUserInput } from '../application/services/user/update-user-use-case';
+import { todoTypeController } from './todo-type/todo-type-controller';
 import { todoController } from './todo/todo-controller';
 import { userController } from './user/user-controller';
 
@@ -39,7 +40,10 @@ export const apiHandlers = {
   getTodosByUserId: async (getTodosByUserIdArgs: GetTodosByUserIdArgs) =>
     todoController.getTodosByUserId(getTodosByUserIdArgs),
   updateTodo: async (updateTodoData: UpdateTodoInput) => todoController.updateTodo(updateTodoData),
-  deleteTodo: async (deleteTodoData: DeleteTodoInput) => todoController.deleteTodo(deleteTodoData)
+  deleteTodo: async (deleteTodoData: DeleteTodoInput) => todoController.deleteTodo(deleteTodoData),
+
+  // todo-type-controller
+  getTodoTypes: async () => todoTypeController.getTodoTypes()
 };
 
 /** APIの型定義。renderer.d.tsファイルで参照する。*/

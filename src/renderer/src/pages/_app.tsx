@@ -18,7 +18,7 @@ const navItems: NavItem[] = [
       },
       {
         title: 'Todo List',
-        href: '/todos'
+        href: '/todo'
       }
     ]
   },

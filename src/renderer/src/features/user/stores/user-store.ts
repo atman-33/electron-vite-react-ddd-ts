@@ -4,6 +4,8 @@ import { User } from '../types';
 
 type UserStore = {
   users: User[];
+  selectedUser: User | null;
+  setSelectedUser: (user: User) => void;
   getUsers: () => void;
   registerUser: (name: string) => void;
   deleteUser: (id: string) => void;
@@ -11,10 +13,21 @@ type UserStore = {
 
 export const useUserStore = create<UserStore>((set) => ({
   users: [],
+  selectedUser: null,
+  setSelectedUser: (user) => set({ selectedUser: user }),
   getUsers: async () => {
     const res = await window.api.getUsers();
+
     if (res.status === 'success') {
       set({ users: res.data as User[] });
+    } else if (res.status === 'error') {
+      toast.error(res.message, {
+        closeButton: true,
+        duration: 10000,
+        position: 'bottom-center'
+      });
+    } else {
+      throw new Error('unknown error');
     }
   },
   registerUser: async (name) => {
