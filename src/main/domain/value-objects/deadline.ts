@@ -7,6 +7,10 @@ export class Deadline extends ValueObject<Date | null, 'Deadline'> {
   }
 
   protected validate(value: Date | null): void {
+    if (value === null) {
+      return;
+    }
+
     if (!isDate(value)) {
       throw new Error('Deadline must be a Date');
     }

@@ -3,10 +3,11 @@ export interface JSendSuccess<T> {
   data: T;
 }
 
-export interface JSendFail<T> {
-  status: 'fail';
-  data: T;
-}
+// NOTE: JSendFailは利用しない事とする。
+// export interface JSendFail<T> {
+//   status: 'fail';
+//   data: T;
+// }
 
 export interface JSendError {
   status: 'error';
@@ -16,4 +17,4 @@ export interface JSendError {
   data?: any;
 }
 
-export type JSendResponse<T> = JSendSuccess<T> | JSendFail<T> | JSendError;
+export type JSendResponse<T> = JSendSuccess<T> | JSendError;

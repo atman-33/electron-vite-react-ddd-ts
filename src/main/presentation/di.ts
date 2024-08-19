@@ -1,6 +1,7 @@
 import { container, Lifecycle } from 'tsyringe';
 import { PrismaClientManager } from '../infrastructure/prisma/prisma-client-manager';
 import { PrismaTransactionManager } from '../infrastructure/prisma/prisma-transaction-manager';
+import { PrismaTodoTypeQueryService } from '../infrastructure/prisma/todo-type/prisma-todo-type-query-service';
 import { PrismaTodoRepository } from '../infrastructure/prisma/todo/prisma-todo-repository';
 import { PrismaUserRepository } from '../infrastructure/prisma/user/prisma-user-repository';
 
@@ -30,4 +31,8 @@ container.register('IUserRepository', {
 
 container.register('ITodoRepository', {
   useClass: PrismaTodoRepository
+});
+
+container.register('ITodoTypeQueryService', {
+  useClass: PrismaTodoTypeQueryService
 });

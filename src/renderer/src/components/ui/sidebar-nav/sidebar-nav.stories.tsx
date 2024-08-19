@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react/*';
 import { BrowserRouter } from 'react-router-dom';
-import { SidebarNav } from './SidebarNav';
+import { SidebarNav } from './sidebar-nav';
 
 const meta: Meta<typeof SidebarNav> = {
   title: 'Components/SidebarNav',

@@ -1,5 +1,6 @@
-import { Header } from '@renderer/components/ui/header/Header';
-import { NavItem, SidebarNav } from '@renderer/components/ui/sidebar-nav/SidebarNav';
+import { ColorToaster } from '@renderer/components/shadcn/custom/color-toaster';
+import { Header } from '@renderer/components/ui/header/header';
+import { NavItem, SidebarNav } from '@renderer/components/ui/sidebar-nav/sidebar-nav';
 import { Outlet } from 'react-router-dom';
 
 const navItems: NavItem[] = [
@@ -12,12 +13,12 @@ const navItems: NavItem[] = [
     title: '🚀Samples',
     items: [
       {
-        title: 'Config',
-        href: '/config'
+        title: 'User Setting',
+        href: '/user'
       },
       {
-        title: 'Todos',
-        href: '/todos'
+        title: 'Todo List',
+        href: '/todo'
       }
     ]
   },
@@ -49,6 +50,7 @@ const RootLayout = () => {
         <div className="h-full flex-grow">
           <Outlet />
         </div>
+        <ColorToaster />
       </div>
     </div>
   );

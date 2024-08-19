@@ -52,3 +52,16 @@ semi: true
     '@typescript-eslint/explicit-function-return-type': 'off'
   }
 ```
+
+### tsconfig変更
+
+- デバッグ時にコンパイル前のソースを確認可能とするため、sourceMapをtrueに設定する。
+
+`tsconfig.node.json`
+
+```json
+  "compilerOptions": {
+    // ...,
+    "sourceMap": true,
+  }
+```
