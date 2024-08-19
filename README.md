@@ -46,6 +46,7 @@ npm run build:linux
 | shadcn/ui    | コンポーネントライブラリ   |
 | Storybook    | UIコンポーネント開発環境   |
 | Zod          | バリデーションライブラリ   |
+| Zustand      | 状態管理ライブラリ   |
 
 ### バックエンド（main）
 
@@ -55,5 +56,5 @@ npm run build:linux
 | ---------- | -------------------- |
 | Prisma     | ORMライブラリ |
 | TSyringe   | DIコンテナライブラリ |
-| JSend      | JSONレスポンス仕様 [jsend](https://github.com/omniti-labs/jsend) |
+| JSend      | JSONレスポンス仕様 ([jsend](https://github.com/omniti-labs/jsend)) |
 | Jest       | テストフレームワーク |
