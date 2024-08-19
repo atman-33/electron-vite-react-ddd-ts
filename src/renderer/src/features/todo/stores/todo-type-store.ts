@@ -1,5 +1,6 @@
+import { showToastError } from '@renderer/utils/toast';
 import { create } from 'zustand';
-import { TodoType } from '../types';
+import { TodoType } from '../types/todo-type';
 
 type TodoTypeStore = {
   todoTypes: TodoType[];
@@ -19,6 +20,10 @@ export const useTodoTyoeStore = create<TodoTypeStore>((set) => ({
 
     if (res.status === 'success') {
       set({ todoTypes: res.data as TodoType[] });
+    } else if (res.status === 'error') {
+      showToastError(res.message);
+    } else {
+      throw new Error('unknown error');
     }
   }
 }));

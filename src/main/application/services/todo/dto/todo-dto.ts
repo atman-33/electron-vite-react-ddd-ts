@@ -18,8 +18,10 @@ export class TodoDto {
     this.deadline = todo.deadline.value;
     this.status = todo.status.value;
     this.userId = todo.userId.value;
-    this.todoType.id = todo.todoType.id.value;
-    this.todoType.name = todo.todoType.name.value;
-    this.todoType.sortOrder = todo.todoType.sortOrder.value;
+    this.todoType = {
+      id: todo.todoType.id.value,
+      name: todo.todoType.name.value,
+      sortOrder: todo.todoType.sortOrder.value
+    };
   }
 }

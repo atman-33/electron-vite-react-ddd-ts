@@ -5,18 +5,22 @@ import {
   SelectTrigger,
   SelectValue
 } from '@renderer/components/shadcn/ui/select';
-import { useLayoutEffect, useState } from 'react';
+import { useLayoutEffect } from 'react';
 import { useTodoTyoeStore } from '../stores/todo-type-store';
 
 export const TodoTypeSelect = () => {
   const todoTypes = useTodoTyoeStore((store) => store.todoTypes);
   const getTodoTypes = useTodoTyoeStore((store) => store.getTodoTypes);
   const setSelectedTodoType = useTodoTyoeStore((store) => store.setSelectedTodoType);
-  const [selectedOption, setSelectedOption] = useState<string | undefined>();
+  const selectedTodoType = useTodoTyoeStore((store) => store.selectedTodoType);
+  // const [selectedOption, setSelectedOption] = useState<string | undefined>();
 
   useLayoutEffect(() => {
     getTodoTypes();
-    setSelectedOption(todoTypes.at(0)?.id);
+    if (todoTypes.length > 0) {
+      setSelectedTodoType(todoTypes.at(0)!);
+      // setSelectedOption(todoTypes.at(0)?.id);
+    }
   }, []);
 
   const handleOnValueChange = (value: string) => {
@@ -27,12 +31,12 @@ export const TodoTypeSelect = () => {
     }
 
     setSelectedTodoType(todoType);
-    setSelectedOption(todoType.id);
+    // setSelectedOption(todoType.id);
   };
 
   return (
     <>
-      <Select value={selectedOption} onValueChange={(value) => handleOnValueChange(value)}>
+      <Select value={selectedTodoType?.id} onValueChange={(value) => handleOnValueChange(value)}>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Todo type" />
         </SelectTrigger>

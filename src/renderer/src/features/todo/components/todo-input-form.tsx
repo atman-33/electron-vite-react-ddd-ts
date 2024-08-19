@@ -11,6 +11,7 @@ import {
 } from '@renderer/components/shadcn/ui/form';
 import { Input } from '@renderer/components/shadcn/ui/input';
 import { useUserStore } from '@renderer/features/user/stores/user-store';
+import { showToastError } from '@renderer/utils/toast';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { useTodoStore } from '../stores/todo-store';
@@ -38,19 +39,21 @@ export const TodoInputForm = () => {
   });
 
   const handleOnSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    // console.log(values);
 
     if (!selectedUser) {
-      throw new Error('ユーザーが選択されていません');
+      showToastError('ユーザーが選択されていません');
+      return;
     }
 
     if (!selectedTodoType) {
-      throw new Error('TodoTypeが選択されていません');
+      showToastError('TodoTypeが選択されていません');
+      return;
     }
 
     addTodo({
       content: values.content,
-      deadline: new Date(values.deadline),
+      deadline: values.deadline === '' ? null : new Date(values.deadline),
       status: 0,
       userId: selectedUser.id,
       todoType: {

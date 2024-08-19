@@ -1,6 +1,6 @@
-import { toast } from 'sonner';
+import { showToastError, showToastSuccess } from '@renderer/utils/toast';
 import { create } from 'zustand';
-import { User } from '../types';
+import { User } from '../types/user-type';
 
 type UserStore = {
   users: User[];
@@ -21,13 +21,9 @@ export const useUserStore = create<UserStore>((set) => ({
     if (res.status === 'success') {
       set({ users: res.data as User[] });
     } else if (res.status === 'error') {
-      toast.error(res.message, {
-        closeButton: true,
-        duration: 10000,
-        position: 'bottom-center'
-      });
+      showToastError(res.message);
     } else {
-      throw new Error('unknown error');
+      showToastError('unknown error');
     }
   },
   registerUser: async (name) => {
@@ -36,19 +32,11 @@ export const useUserStore = create<UserStore>((set) => ({
     if (res.status === 'success') {
       set((state) => ({ users: [...state.users, res.data as User] }));
 
-      toast.success('User registerd.', {
-        closeButton: true,
-        duration: 2000,
-        position: 'bottom-center'
-      });
+      showToastSuccess('User registerd.');
     } else if (res.status === 'error') {
-      toast.error(res.message, {
-        closeButton: true,
-        duration: 10000,
-        position: 'bottom-center'
-      });
+      showToastError(res.message);
     } else {
-      throw new Error('unknown error');
+      showToastError('unknown error');
     }
   },
   deleteUser: async (id) => {
@@ -56,20 +44,11 @@ export const useUserStore = create<UserStore>((set) => ({
 
     if (res.status === 'success') {
       set((state) => ({ users: state.users.filter((u) => u.id !== id) }));
-
-      toast.success('User deleted.', {
-        closeButton: true,
-        duration: 2000,
-        position: 'bottom-center'
-      });
+      showToastSuccess('User deleted.');
     } else if (res.status === 'error') {
-      toast.error(res.message, {
-        closeButton: true,
-        duration: 10000,
-        position: 'bottom-center'
-      });
+      showToastError(res.message);
     } else {
-      throw new Error('unknown error');
+      showToastError('unknown error');
     }
   }
 }));

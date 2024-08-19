@@ -1,4 +1,4 @@
-import { toast } from 'sonner';
+import { showToastError, showToastSuccess } from '@renderer/utils/toast';
 import { create } from 'zustand';
 import {
   AddTodoInput,
@@ -6,7 +6,7 @@ import {
   GetTodosByUserIdArgs,
   Todo,
   UpdateTodoInput
-} from '../types';
+} from '../types/todo-type';
 
 type TodoStore = {
   todos: Todo[];
@@ -24,34 +24,22 @@ export const useTodoStore = create<TodoStore>((set) => ({
     if (res.status === 'success') {
       set({ todos: res.data as Todo[] });
     } else if (res.status === 'error') {
-      toast.error(res.message, {
-        closeButton: true,
-        duration: 10000,
-        position: 'bottom-center'
-      });
+      showToastError(res.message);
     } else {
-      throw new Error('unknown error');
+      showToastError('unknown error');
     }
   },
   addTodo: async (addTodoData) => {
+    // console.log(addTodoData);
     const res = await window.api.addTodo(addTodoData);
 
     if (res.status === 'success') {
       set((state) => ({ todos: [...state.todos, res.data as Todo] }));
-
-      toast.success('Todo added.', {
-        closeButton: true,
-        duration: 2000,
-        position: 'bottom-center'
-      });
+      showToastSuccess('Todo added.');
     } else if (res.status === 'error') {
-      toast.error(res.message, {
-        closeButton: true,
-        duration: 10000,
-        position: 'bottom-center'
-      });
+      showToastError(res.message);
     } else {
-      throw new Error('unknown error');
+      showToastError('unknown error');
     }
   },
   updateTodo: async (updateTodoData) => {
@@ -70,19 +58,11 @@ export const useTodoStore = create<TodoStore>((set) => ({
         })
       }));
 
-      toast.success('Todo updated.', {
-        closeButton: true,
-        duration: 2000,
-        position: 'bottom-center'
-      });
+      showToastSuccess('Todo updated.');
     } else if (res.status === 'error') {
-      toast.error(res.message, {
-        closeButton: true,
-        duration: 10000,
-        position: 'bottom-center'
-      });
+      showToastError(res.message);
     } else {
-      throw new Error('unknown error');
+      showToastError('unknown error');
     }
   },
   deleteTodo: async (deleteTodoData) => {
@@ -90,20 +70,11 @@ export const useTodoStore = create<TodoStore>((set) => ({
 
     if (res.status === 'success') {
       set((state) => ({ todos: state.todos.filter((t) => t.id !== deleteTodoData.id) }));
-
-      toast.success('Todo deleted.', {
-        closeButton: true,
-        duration: 2000,
-        position: 'bottom-center'
-      });
+      showToastSuccess('Todo deleted.');
     } else if (res.status === 'error') {
-      toast.error(res.message, {
-        closeButton: true,
-        duration: 10000,
-        position: 'bottom-center'
-      });
+      showToastError(res.message);
     } else {
-      throw new Error('unknown error');
+      showToastError('unknown error');
     }
   }
 }));

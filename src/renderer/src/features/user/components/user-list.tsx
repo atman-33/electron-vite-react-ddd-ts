@@ -31,7 +31,7 @@ export const UserList = () => {
       <TableCaption>A list of registered users.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead>ID</TableHead>
+          {/* <TableHead>ID</TableHead> */}
           <TableHead>Name</TableHead>
           <TableHead className="text-center">Delete</TableHead>
         </TableRow>
@@ -39,7 +39,7 @@ export const UserList = () => {
       <TableBody>
         {users?.map((user) => (
           <TableRow key={user.id}>
-            <TableCell className="font-medium">{user.id}</TableCell>
+            {/* <TableCell className="text-xs">{user.id}</TableCell> */}
             <TableCell>{user.name}</TableCell>
             <TableCell className="text-center">
               <Button variant="ghost" onClick={() => handleDeleteClick(user.id)}>

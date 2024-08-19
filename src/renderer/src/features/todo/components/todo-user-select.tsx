@@ -6,10 +6,17 @@ import {
   SelectValue
 } from '@renderer/components/shadcn/ui/select';
 import { useUserStore } from '@renderer/features/user/stores/user-store';
+import { useEffect } from 'react';
 
 export const TodoUserSelect = () => {
   const users = useUserStore((store) => store.users);
+  const getUsers = useUserStore((store) => store.getUsers);
   const setSelectedUser = useUserStore((store) => store.setSelectedUser);
+  const selectedUser = useUserStore((store) => store.selectedUser);
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   const handleOnValueChange = (value: string) => {
     const user = users.find((u) => u.id === value);
@@ -25,7 +32,7 @@ export const TodoUserSelect = () => {
     <>
       <div className="flex items-center gap-4">
         <div className="text-sm">ユーザーを選択してください</div>
-        <Select onValueChange={(value) => handleOnValueChange(value)}>
+        <Select value={selectedUser?.id} onValueChange={(value) => handleOnValueChange(value)}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Username" />
           </SelectTrigger>
