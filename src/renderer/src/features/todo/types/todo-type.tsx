@@ -1,47 +1,11 @@
-export type Todo = {
-  id: string;
-  content: string;
-  deadline: Date | null;
-  status: number;
-  userId: string;
-  todoType: TodoType;
-};
+export type Todo = typeof window.apiType.TodoDto;
 
-export type TodoType = {
-  id: string;
-  name: string;
-  sortOrder: number;
-};
+export type TodoType = typeof window.apiType.TodoTypeDto;
 
-export type GetTodosByUserIdArgs = {
-  id: string;
-};
+export type GetTodosByUserIdArgs = typeof window.apiType.GetTodosByUserIdArgs;
 
-export type AddTodoInput = {
-  content: string;
-  deadline: Date | null;
-  status: number;
-  userId: string;
-  todoType: {
-    id: string;
-    name: string;
-    sortOrder: number;
-  };
-};
+export type AddTodoInput = typeof window.apiType.AddTodoInput;
 
-export type UpdateTodoInput = {
-  id: string;
-  content: string;
-  deadline: Date | null;
-  status: number;
-  userId: string;
-  todoType: {
-    id: string;
-    name: string;
-    sortOrder: number;
-  };
-};
+export type UpdateTodoInput = typeof window.apiType.UpdateTodoInput;
 
-export type DeleteTodoInput = {
-  id: string;
-};
+export type DeleteTodoInput = typeof window.apiType.DeleteTodoInput;
