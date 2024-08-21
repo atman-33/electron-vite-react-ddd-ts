@@ -14,7 +14,7 @@ npm create @quick-start/electron
 ```
 
 ```sh
-√ Project name: ... electron-vite-react-ts
+√ Project name: ... electron-vite-readt-ddd-ts
 √ Select a framework: » react
 √ Add TypeScript? ... Yes
 √ Add Electron updater plugin? ... Yes

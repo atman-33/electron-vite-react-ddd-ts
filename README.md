@@ -1,4 +1,4 @@
-# electron-vite-react-ts
+# electron-vite-readt-ddd-ts
 
 An Electron application with React and TypeScript
 
@@ -46,15 +46,15 @@ npm run build:linux
 | shadcn/ui    | コンポーネントライブラリ   |
 | Storybook    | UIコンポーネント開発環境   |
 | Zod          | バリデーションライブラリ   |
-| Zustand      | 状態管理ライブラリ   |
+| Zustand      | 状態管理ライブラリ         |
 
 ### バックエンド（main）
 
 - ディレクトリ構造: DDD オニオンアーキテクチャ
 
-| パッケージ | 説明                 |
-| ---------- | -------------------- |
-| Prisma     | ORMライブラリ |
-| TSyringe   | DIコンテナライブラリ |
+| パッケージ | 説明                                                               |
+| ---------- | ------------------------------------------------------------------ |
+| Prisma     | ORMライブラリ                                                      |
+| TSyringe   | DIコンテナライブラリ                                               |
 | JSend      | JSONレスポンス仕様 ([jsend](https://github.com/omniti-labs/jsend)) |
-| Jest       | テストフレームワーク |
+| Jest       | テストフレームワーク                                               |
