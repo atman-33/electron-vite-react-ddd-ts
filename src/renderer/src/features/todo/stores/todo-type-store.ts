@@ -9,7 +9,7 @@ type TodoTypeStore = {
   getTodoTypes: () => void;
 };
 
-export const useTodoTyoeStore = create<TodoTypeStore>((set) => ({
+export const useTodoTyoeStore = create<TodoTypeStore>((set, get) => ({
   todoTypes: [],
   selectedTodoType: null,
   setSelectedTodoType: (todoType) => {
@@ -19,7 +19,11 @@ export const useTodoTyoeStore = create<TodoTypeStore>((set) => ({
     const res = await window.api.getTodoTypes();
 
     if (res.status === 'success') {
-      set({ todoTypes: res.data as TodoType[] });
+      // NOTE: selectedTodoTypeが未設定であれば、取得データの初めのデータを設定
+      set({
+        todoTypes: res.data as TodoType[],
+        selectedTodoType: get().selectedTodoType ?? res.data.at(0)
+      });
     } else if (res.status === 'error') {
       showToastError(res.message);
     } else {

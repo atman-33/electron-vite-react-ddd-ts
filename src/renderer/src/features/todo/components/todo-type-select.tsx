@@ -13,14 +13,10 @@ export const TodoTypeSelect = () => {
   const getTodoTypes = useTodoTyoeStore((store) => store.getTodoTypes);
   const setSelectedTodoType = useTodoTyoeStore((store) => store.setSelectedTodoType);
   const selectedTodoType = useTodoTyoeStore((store) => store.selectedTodoType);
-  // const [selectedOption, setSelectedOption] = useState<string | undefined>();
 
   useLayoutEffect(() => {
     getTodoTypes();
-    if (todoTypes.length > 0) {
-      setSelectedTodoType(todoTypes.at(0)!);
-      // setSelectedOption(todoTypes.at(0)?.id);
-    }
+    console.log(selectedTodoType);
   }, []);
 
   const handleOnValueChange = (value: string) => {
@@ -31,7 +27,6 @@ export const TodoTypeSelect = () => {
     }
 
     setSelectedTodoType(todoType);
-    // setSelectedOption(todoType.id);
   };
 
   return (
